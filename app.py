@@ -2,7 +2,22 @@ import plotly.graph_objects as go
 import streamlit as st
 import pandas as pd
 import pickle
-
+def create_gauge(prob):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=prob * 100,
+        title={'text': "Churn Risk (%)"},
+        gauge={
+            'axis': {'range': [0, 100]},
+            'bar': {'color': "red"},
+            'steps': [
+                {'range': [0, 40], 'color': "green"},
+                {'range': [40, 70], 'color': "yellow"},
+                {'range': [70, 100], 'color': "red"}
+            ]
+        }
+    ))
+    return fig
 # Page setup
 st.set_page_config(page_title='Customer Churn Predictor', layout='wide')
 st.title('Customer Churn Prediction System')
