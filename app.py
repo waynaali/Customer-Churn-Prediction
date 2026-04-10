@@ -13,7 +13,7 @@ def create_gauge(prob):
         title={'text': "Churn Risk (%)"},
         gauge={
             'axis': {'range': [0, 100]},
-            'bar': {'color': "red"},
+            'bar': {'color': "#444444"}
             'steps': [
                 {'range': [0, 40], 'color': "green"},
                 {'range': [40, 70], 'color': "yellow"},
