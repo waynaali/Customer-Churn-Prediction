@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-\# Customer Churn Predictor
+# 🚀 📊 Customer Churn Prediction Project (End-to-End ML System)
 
-Streamlit app for predicting customer churn.
+## 🧠 Week 1 – Week 4: Complete Machine Learning Pipeline
 
-=======
-# Customer Churn Prediction
+---
 
-## Week 1 – Week 3: EDA + Machine Learning + Model Optimization
-
-### 📌 Course Information
+## 📌 Course Information
 
 * **Course:** Introduction to Applied Artificial Intelligence
 * **Semester:** BS 8th Semester
@@ -20,15 +16,26 @@ Streamlit app for predicting customer churn.
 
 ## 📊 Project Overview
 
-This project focuses on performing **Exploratory Data Analysis (EDA)**, building **machine learning models**, and applying **model optimization techniques** on the Telco Customer Churn dataset.
+This project is a complete **end-to-end Machine Learning system** that predicts whether a customer will churn or stay.
 
-**Goals:**
+It includes:
 
-* Understand customer behavior patterns
-* Identify factors contributing to churn
-* Build predictive models to classify churn
+* Data Analysis
+* Feature Engineering
+* Model Training & Optimization
+* Model Evaluation
+* Deployment using Streamlit
+
+---
+
+## 🎯 Objectives
+
+* Understand customer churn behavior
+* Identify key factors affecting churn
+* Build ML models for prediction
 * Optimize model performance
-* Generate actionable business insights
+* Deploy a working web application
+* Enable real-time predictions
 
 ---
 
@@ -37,66 +44,72 @@ This project focuses on performing **Exploratory Data Analysis (EDA)**, building
 * **Source:** Telco Customer Churn Dataset (Kaggle)
 * **Total Customers:** 7,043
 * **Total Features:** 21
-* **Target Variable:** `Churn` (Yes/No)
-
-⚠️ Note: The dataset file (`customer_data.csv`) is not included in this repository.
-Please download it from Kaggle and place it in the project folder before running the notebooks.
+* **Target Variable:** Churn (Yes/No)
 
 ---
 
 ## 📁 Repository Structure
 
-* `week1_eda.ipynb` → Exploratory Data Analysis
-* `week2_ml_models.ipynb` → Baseline ML models
-* `week3_optimization.ipynb` → Model tuning & optimization
-* `best_churn_model.pkl` → Saved optimized model
-* `model_metadata.json` → Model configuration & parameters
-* `README.md` → Project documentation
-* `.gitignore` → Excludes unnecessary files
+```
+Customer-Churn-Prediction/
+│
+├── app.py                      # Streamlit web app
+├── best_churn_model.pkl        # Trained ML model
+├── requirements.txt            # Dependencies
+├── README.md                   # Documentation
+│
+├── week1_eda.ipynb             # Data exploration
+├── week2_ml_models.ipynb       # ML models
+├── week3_optimization.ipynb    # Model tuning
+```
 
 ---
 
-## 🔍 Key Insights
-
-### **Week 1: EDA**
-
-* Month-to-month contract customers show highest churn
-* Short tenure customers (< 6 months) are high-risk
-* Higher Monthly Charges → higher churn probability
-* Fiber optic users churn more than DSL users
-* Electronic check users have higher churn
+## 🔍 Week-wise Breakdown
 
 ---
 
-### **Week 2: ML Models**
+### 📊 Week 1: Exploratory Data Analysis (EDA)
 
-* Models trained:
+* Data cleaning & preprocessing
+* Missing values handling
+* Customer behavior analysis
+* Key churn patterns identified
 
-  * Logistic Regression
-  * Decision Tree
-  * Random Forest
+### 🔥 Key Insights:
 
-* Feature engineering:
-
-  * `TotalRevenue`
-  * `TotalServices`
-  * `TenureGroup`
-  * `HighCharges`
-
-* Random Forest performed best among baseline models
+* Month-to-month customers churn more
+* Low tenure = high churn risk
+* High monthly charges increase churn
+* Fiber optic users churn more
+* Electronic check users are high risk
 
 ---
 
-### **Week 3: Model Optimization**
+### 🤖 Week 2: Machine Learning Models
 
-* Applied **hyperparameter tuning** (Grid Search / Random Search)
-* Used **cross-validation** for reliable evaluation
-* Optimized models:
+* Logistic Regression
+* Decision Tree
+* Random Forest
 
-  * Random Forest
-  * XGBoost
+### Feature Engineering:
 
-**Results:**
+* TotalRevenue
+* TotalServices
+* Tenure Groups
+* High Charges Flag
+
+✔ Random Forest performed best initially
+
+---
+
+### ⚙️ Week 3: Model Optimization
+
+* Hyperparameter tuning (GridSearch / RandomSearch)
+* Cross-validation
+* XGBoost optimization
+
+### 📈 Results:
 
 | Model             | Accuracy |
 | ----------------- | -------- |
@@ -104,64 +117,76 @@ Please download it from Kaggle and place it in the project folder before running
 | Optimized RF      | ~86%     |
 | Optimized XGBoost | ~88–89%  |
 
-✅ **Best Model:** Optimized XGBoost
-✅ Achieved **85%+ accuracy target**
+✔ Final Model: **XGBoost (~86–88% accuracy)**
+
+---
+
+### 🚀 Week 4: Deployment (Streamlit App)
+
+* Built interactive web app using Streamlit
+* Integrated trained ML model
+* Created real-time prediction system
+* User input form added
+* Risk-based churn prediction output
+
+---
+
+## 🧠 App Features
+
+* Customer demographic input
+* Account information input
+* Real-time churn prediction
+* Risk classification (High / Low)
+* Probability score display
+
+---
+
+## ⚙️ How to Run Project
+
+### 1️⃣ Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2️⃣ Run Streamlit app
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🎯 Example Output
+
+* 🟥 HIGH RISK: Customer likely to churn
+* 🟩 LOW RISK: Customer likely to stay
+* 📊 Churn probability shown in %
 
 ---
 
 ## 🧠 Key Learnings
 
-* Cross-validation improves reliability of results
-* Hyperparameter tuning significantly boosts performance
-* XGBoost outperforms traditional ensemble methods
-* Feature engineering plays a critical role in prediction quality
-* Model comparison is essential before final selection
+* End-to-end ML pipeline development
+* Feature engineering impact
+* Model optimization techniques
+* Real-world deployment using Streamlit
+* Production-ready ML workflow
 
 ---
 
-## ⚙️ Setup Instructions
+## 🚀 Final Outcome
 
-Install dependencies:
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter xgboost
-```
-
-Run notebooks:
-
-```bash
-jupyter notebook week1_eda.ipynb
-jupyter notebook week2_ml_models.ipynb
-jupyter notebook week3_optimization.ipynb
-```
-
----
-
-## 🚀 Next Steps (Week 4)
-
-* Deploy model using Flask / Streamlit
-* Build interactive UI for predictions
-* Add model explainability (SHAP)
-* Perform real-time inference
-
----
-
-## 🎯 Learning Outcomes
-
-* Data preprocessing & cleaning
-* Exploratory Data Analysis (EDA)
-* Machine learning model development
-* Feature engineering
-* Model optimization & tuning
-* Performance evaluation techniques
-* Business insight extraction
-* End-to-end ML workflow
-* Git & GitHub version control
+✔ Complete ML lifecycle project
+✔ Working web application
+✔ Trained and optimized model
+✔ Portfolio-ready GitHub project
+✔ Real-world business use case
 
 ---
 
 ## 📬 Contact
 
-* LinkedIn: [Wayna Ali](https://www.linkedin.com/in/waynaali/)
-* GitHub: [waynaali](https://github.com/waynaali)
->>>>>>> 7f433340146b6a1b1041e1c0470a3d0be22d4a28
+* GitHub: [https://github.com/waynaali](https://github.com/waynaali)
+* LinkedIn: [https://www.linkedin.com/in/waynaali/](https://www.linkedin.com/in/waynaali/)
+
