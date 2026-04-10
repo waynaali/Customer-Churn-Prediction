@@ -15,8 +15,8 @@ def create_gauge(prob):
             'axis': {'range': [0, 100]},
             'bar': {'color': "#333333"},
             'steps': [
-                {'range': [0, 40], 'color': "blue"},
-                {'range': [40, 70], 'color': "green"},
+                {'range': [0, 40], 'color': "green"},
+                {'range': [40, 70], 'color': "orange"},
                 {'range': [70, 100], 'color': "red"}
             ]
         }
