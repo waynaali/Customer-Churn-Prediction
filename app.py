@@ -1,3 +1,68 @@
+import streamlit as st
+import pandas as pd
+import pickle
+import plotly.graph_objects as go
+
+# -------------------------
+# Gauge Function
+# -------------------------
+def create_gauge(prob):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=prob * 100,
+        title={'text': "Churn Risk (%)"},
+        gauge={
+            'axis': {'range': [0, 100]},
+            'bar': {'color': "#333333"},
+            'steps': [
+                {'range': [0, 40], 'color': "#d4f7d4"},
+                {'range': [40, 70], 'color': "#fff4cc"},
+                {'range': [70, 100], 'color': "#ffd6d6"}
+            ]
+        }
+    ))
+    return fig
+
+
+# -------------------------
+# Page Setup
+# -------------------------
+st.set_page_config(page_title='Customer Churn Predictor', layout='wide')
+st.title('📊 Customer Churn Prediction System')
+
+
+# -------------------------
+# Load Model
+# -------------------------
+@st.cache_resource
+def load_model():
+    with open('best_churn_model.pkl', 'rb') as file:
+        return pickle.load(file)
+
+model_data = load_model()
+model = model_data["model"]
+model_columns = model_data["columns"]
+
+st.success("✅ Model loaded successfully!")
+
+
+# -------------------------
+# Inputs
+# -------------------------
+col1, col2 = st.columns(2)
+
+with col1:
+    gender = st.selectbox('Gender', ['Male', 'Female'])
+    senior_citizen = st.selectbox('Senior Citizen', ['No', 'Yes'])
+
+with col2:
+    tenure = st.slider('Tenure (months)', 0, 72, 12)
+    monthly_charges = st.number_input('Monthly Charges', 0.0, 200.0, 70.0)
+
+
+# -------------------------
+# Prediction Button
+# -------------------------
 if st.button('Predict Churn'):
 
     # input data
@@ -25,6 +90,7 @@ if st.button('Predict Churn'):
     probability = model.predict_proba(input_encoded)[0]
     churn_prob = probability[1] * 100
 
+
     # -------------------------
     # OUTPUT DASHBOARD
     # -------------------------
@@ -40,19 +106,19 @@ if st.button('Predict Churn'):
         - Offer discount or loyalty bonus  
         - Contact customer for feedback  
         - Provide priority support  
-        - Run retention campaign immediately  
+        - Run retention campaigns  
         """)
 
     else:
         st.success("✅ Low Risk Customer")
 
-        st.info("📌 Growth Strategy Recommendations")
+        st.info("📌 Growth Recommendations")
         st.write("""
         - Upsell premium services  
         - Offer referral rewards  
         - Improve engagement programs  
-        - Strengthen long-term loyalty  
+        - Build long-term loyalty  
         """)
 
     # Gauge chart
-    st.plotly_chart(create_gauge(churn_prob / 100))
+    st.plotly_chart(create_gauge(churn_prob / 100), use_container_width=True)
